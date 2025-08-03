@@ -1,0 +1,769 @@
+:root {
+    /* Colors */
+    --blanco: #fff;
+    --negro: #000;
+    --neutral-c: #f5f5f5;
+    --gris-oscuro: #8c8c8c;
+    --grafito: #222;
+    --rojo: #b81515;
+}
+
+* {
+    font-family: Montserrat;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(240, 240, 207);
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 🔹 ESTILOS DEL ENCABEZADO */
+
+
+/* 🔹 Ajuste para que el banner no quede tapado */
+.banner {
+    margin-top: 80px;
+    /* Añade margen superior para evitar que el header tape la imagen */
+}
+
+.encabezado__container {
+    background: #080808;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    position: relative;
+}
+
+/* LOGO */
+.encabezado__logo {
+    display: flex;
+    align-items: center;
+    order: 1;
+    justify-content: flex-start;
+}
+
+.encabezado__logo--icono {
+    max-height: 40px;
+    display: block;
+}
+
+/* NAVEGACIÓN (solo visible en escritorio) */
+.encabezado__navegacion {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    order: 2;
+}
+
+.encabezado__navegacion--elemento {
+    color: var(--blanco);
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.encabezado__navegacion--elemento:hover {
+    color: #ff9800;
+}
+
+/* BOTÓN HAMBURGUESA */
+.encabezado__menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: var(--blanco);
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+}
+
+/* RESPONSIVE: MOBILE */
+@media (max-width: 768px) {
+    .encabezado {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .encabezado__logo {
+        order: 1;
+        padding-left: 0;
+        margin-right: auto;
+        margin-top: 17px;
+
+    }
+
+    .encabezado__menu-toggle {
+        display: flex;
+        order: 2;
+        margin-left: auto;
+        padding-right: 0;
+        align-self: center;
+        margin-top: -40px;
+
+    }
+
+    .encabezado__navegacion {
+        display: none;
+        flex-direction: column;
+        background: #1a1a1a;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        z-index: 10;
+        border-top: 2px solid #ff9800;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        order: 3;
+    }
+
+    .encabezado__navegacion.activo {
+        display: flex;
+    }
+
+    .encabezado__navegacion--elemento {
+        padding: 14px 0;
+        font-size: 20px;
+        border-bottom: 1px solid #333;
+        color: white;
+    }
+}
+
+
+.banner__img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .banner__img {
+        max-height: none;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+
+.testimonios__titulo,
+.pago__titulo,
+.destinos__titulo,
+.busca__titulo,
+.ofertas__titulo {
+    color: var(--grafito);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.testimonios__titulo--subrayado,
+.pago__titulo--subrayado,
+.destinos__titulo--subrayado,
+.busca__titulo--subrayado,
+.ofertas__titulo--subrayado {
+    width: 180px;
+    height: 4px;
+    background: var(--rojo);
+    margin: 0 auto;
+    margin-top: 16px;
+}
+
+/* Contenedor general */
+.busca__contenedor {
+    width: 100%;
+    overflow: hidden;
+}
+
+/* FLECHAS — desactivadas ya que no habrá scroll */
+.categoria__flecha {
+    display: none;
+}
+
+/* Contenedor de categorías */
+.busca__categorias {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+}
+
+/* Tarjeta individual */
+.busca__categoria {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.busca__categoria img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+/* PC: mostrar en grilla de 3 columnas */
+@media (min-width: 768px) {
+    .busca__categorias {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        /* 🔥 3 columnas fijas */
+        gap: 20px;
+        overflow: visible;
+        /* 🔥 Ya no hay scroll horizontal */
+        scroll-snap-type: none;
+    }
+
+    .busca__categoria {
+        flex: unset;
+        scroll-snap-align: unset;
+    }
+}
+
+
+
+
+/*aqui empece yo angel*/
+/* Estilos base */
+.banner-list-moca {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 1200px;
+    margin: auto;
+    list-style: none;
+    padding: 0;
+}
+
+/* Imagen principal a la izquierda */
+.banner-item-moca:first-child,
+.banner-item-moca:nth-child(4) {
+    grid-row: span 2;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/2;
+    /* Hace que la imagen sea más horizontal */
+}
+
+/* Contenedor de las imágenes secundarias */
+.imagen-derecha {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.banner-item-moca:nth-child(2),
+.banner-item-moca:nth-child(3),
+.banner-item-moca:nth-child(5),
+.banner-item-moca:nth-child(6) {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ajustes generales */
+.banner-item-moca {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.banner-item-moca a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-item-moca .img-responsive {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.banner-item-moca:hover .img-responsive {
+    transform: scale(1.05);
+}
+
+/* Contenedor de texto dentro de la imagen */
+.banner-inner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: left;
+    transition: background 0.3s ease;
+    border-radius: 0 0 10px 10px;
+}
+
+.banner-inner h3,
+.banner-inner h4 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.banner-inner p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.banner-item-moca:hover .banner-inner {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Botón Ver más */
+.btn__link {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn__link:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .banner-list-moca {
+        grid-template-columns: 1fr;
+    }
+
+    .imagen-derecha {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .banner-item-moca {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner-item-moca .img-responsive {
+        width: 100%;
+        height: auto;
+    }
+
+    .banner-inner {
+        width: 90%;
+        padding: 15px;
+        background: rgba(0, 0, 0, 0.6);
+        text-align: center;
+        border-radius: 10px;
+    }
+}
+
+/* Estilos base */
+#bonhtmlcontent .container ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#bonhtmlcontent li {
+    box-sizing: border-box;
+    padding: 20px;
+    flex: 0 0 33.33%;
+    /* 3 columnas en desktop */
+    max-width: 33.33%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+#bonhtmlcontent li:hover {
+    transform: scale(1.05);
+}
+
+.box-htmlcontent {
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Imagenes responsivas */
+.icon-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Títulos y textos */
+h3 {
+    font-size: 1.5rem;
+    margin: 10px 0 5px;
+    color: #000;
+}
+
+h5 {
+    font-size: 1rem;
+    color: #777;
+    margin: 0;
+}
+
+/* Responsivo para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+    #bonhtmlcontent li {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+.servicios {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.servicios-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.servicio {
+    width: 300px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.servicio:hover {
+    transform: translateY(-5px);
+}
+
+.servicio img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.servicio h3 {
+    margin: 15px 0 10px;
+    font-size: 1.5em;
+    color: #D2691E;
+    /* Color chocolate elegante */
+}
+
+.servicio p {
+    font-size: 1em;
+    color: #555;
+}
+
+
+.ver-detalles {
+    background-color: #a94442;
+    /* Rojo elegante */
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    display: block;
+    margin: 10px auto;
+}
+
+.ver-detalles:hover {
+    background-color: #7d2e2b;
+    /* Rojo más oscuro */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ver-detalles:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor de todas las categorías */
+.categorias {
+    background-color: #493e3e;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Dos columnas */
+    gap: 10px;
+    /* Espacio entre elementos */
+    padding: 20px;
+    box-sizing: border-box;
+    /* Evita desbordamiento */
+}
+
+/* Estilo para cada categoría individual */
+.categorias {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para una categoría grande (Tortas y Servicios) */
+.categorias--grande {
+    grid-column: 1 / 2;
+    /* Ocupa la primera columna */
+    grid-row: span 2;
+    /* Ocupa dos filas */
+    height: 100%;
+    /* Ajusta la altura */
+}
+
+/* Estilo para una categoría pequeña (Postres, Buffet, Snacks, Bebidas) */
+.categorias--pequena {
+    grid-column: 2 / 3;
+    /* Ocupa la segunda columna */
+    height: calc(50% - 5px);
+    /* Mitad de la altura de la categoría grande */
+}
+
+/* Contenedor de la imagen de la categoría */
+.categorias__imagen {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.categorias__imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Contenedor de texto dentro de cada categoría */
+.categorias__contenido {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 80%;
+    color: white;
+}
+
+/* Estilo del botón dentro del contenido de cada categoría */
+.categorias__boton {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: #d9534f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.categorias__boton:hover {
+    background: #c9302c;
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .categorias {
+        grid-template-columns: 1fr;
+        /* Una columna en móviles */
+    }
+
+    .categorias--grande,
+    .categorias--pequena {
+        grid-column: auto;
+        /* Restablece la posición */
+        grid-row: auto;
+        /* Restablece la posición */
+        height: auto;
+        /* Altura automática */
+    }
+}
+
+/* Contenedor de la imagen de la categoría */
+.categorias__imagen {
+    width: 100%;
+    /* La imagen ocupa todo el ancho del contenedor */
+    aspect-ratio: 2.5 / 1;
+    /* Proporción de 2.5 veces más ancha que alta */
+    overflow: hidden;
+    /* Ocultar cualquier contenido que se desborde */
+
+}
+
+.categorias__titulo {
+    text-align: center;
+    /* Centra el título */
+    font-size: 2rem;
+    /* Tamaño de fuente grande */
+    font-family: var(--fuente-principal);
+    /* Usa la fuente principal definida en las variables */
+    font-weight: bold;
+    /* Texto en negrita */
+    margin-bottom: 20px;
+    /* Espaciado debajo del título */
+    color: #eaedf5;
+    /* Color gris oscuro */
+    text-transform: uppercase;
+    /* Convierte el texto a mayúsculas */
+    letter-spacing: 2px;
+    /* Espaciado entre letras */
+}
+
+/*----------------------------------------------------------*/
+
+/* --- PIE DE PÁGINA (FOOTER) --- */
+footer {
+    text-align: center;
+    background: #080808;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #f4eeee;
+}
+
+.social-icon {
+    margin: 0 10px;
+    color: #f4efef;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #080597;
+}
+
+/* --- BOTÓN DE WHATSAPP --- */
+.whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25D366;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.whatsapp:hover {
+    transform: scale(1.1);
+}
+
+.whatsapp svg {
+    fill: white;
+    width: 36px;
+    height: 36px;
+}
+
+/* --- MEDIA QUERIES PARA RESPONSIVIDAD --- */
+@media screen and (max-width: 768px) {
+    .encabezado {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .encabezado__navegacion {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .busca__titulo h1 {
+        font-size: 1.8rem;
+    }
+
+    @media screen and (max-width: 480px) {
+        .busca__titulo h1 {
+            font-size: 1.5rem;
+        }
+
+        .busca__verdetalles {
+            font-size: 0.9rem;
+        }
+    }
+}
+
+/* ------------------ Productos Populares ------------------ */
+.banner-list-moca {
+    background-color: #eddddd;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 1200px;
+    margin: auto;
+    list-style: none;
+    padding: 0;
+}
+
+/* Imagen principal a la izquierda */
+.banner-item-moca:first-child,
+.banner-item-moca:nth-child(4) {
+    grid-row: span 2;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4/3;
+    /* Hace que la imagen sea más horizontal */
+}
+
+/* Contenedor de las imágenes secundarias */
+.imagen-derecha {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
