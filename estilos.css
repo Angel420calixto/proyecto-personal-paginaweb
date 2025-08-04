@@ -14,7 +14,7 @@
 }
 
 body {
-    background-color: rgb(240, 240, 207);
+    background-color: rgba(207, 215, 240, 0.638);
     margin: 0;
 }
 
@@ -260,7 +260,6 @@ a {
 
 
 /*aqui empece yo angel*/
-/* Estilos base */
 .banner-list-moca {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -395,14 +394,8 @@ a {
         height: auto;
     }
 
-    .banner-inner {
-        width: 90%;
-        padding: 15px;
-        background: rgba(0, 0, 0, 0.6);
-        text-align: center;
-        border-radius: 10px;
-    }
 }
+
 
 /* Estilos base */
 #bonhtmlcontent .container ul {
