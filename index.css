@@ -1,0 +1,331 @@
+:root {
+    /* Colors */
+    --blanco: #fff;
+    --negro: #000;
+    --neutral-c: #f5f5f5;
+    --gris-oscuro: #8c8c8c;
+    --grafito: #222;
+    --rojo: #b81515;
+}
+
+* {
+    font-family: Montserrat;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(207, 215, 240, 0.638);
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* 🔹 ESTILOS DEL ENCABEZADO */
+
+
+/* 🔹 Ajuste para que el banner no quede tapado */
+.banner {
+    margin-top: 80px;
+    /* Añade margen superior para evitar que el header tape la imagen */
+}
+
+.encabezado__container {
+    background: #080808;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    position: relative;
+}
+
+/* LOGO */
+.encabezado__logo {
+    display: flex;
+    align-items: center;
+    order: 1;
+    justify-content: flex-start;
+}
+
+.encabezado__logo--icono {
+    max-height: 40px;
+    display: block;
+}
+
+/* NAVEGACIÓN (solo visible en escritorio) */
+.encabezado__navegacion {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    order: 2;
+}
+
+.encabezado__navegacion--elemento {
+    color: var(--blanco);
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.encabezado__navegacion--elemento:hover {
+    color: #ff9800;
+}
+
+/* BOTÓN HAMBURGUESA */
+.encabezado__menu-toggle {
+    display: none;
+    font-size: 28px;
+    color: var(--blanco);
+    background: none;
+    border: none;
+    cursor: pointer;
+    align-items: center;
+}
+
+/* RESPONSIVE: MOBILE */
+@media (max-width: 768px) {
+    .encabezado {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .encabezado__logo {
+        order: 1;
+        padding-left: 0;
+        margin-right: auto;
+        margin-top: 17px;
+
+    }
+
+    .encabezado__menu-toggle {
+        display: flex;
+        order: 2;
+        margin-left: auto;
+        padding-right: 0;
+        align-self: center;
+        margin-top: -40px;
+
+    }
+
+    .encabezado__navegacion {
+        display: none;
+        flex-direction: column;
+        background: #1a1a1a;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        z-index: 10;
+        border-top: 2px solid #ff9800;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        order: 3;
+    }
+
+    .encabezado__navegacion.activo {
+        display: flex;
+    }
+
+    .encabezado__navegacion--elemento {
+        padding: 14px 0;
+        font-size: 20px;
+        border-bottom: 1px solid #333;
+        color: white;
+    }
+}
+
+
+.banner__img {
+    width: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .banner__img {
+        max-height: none;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.testimonios__titulo,
+.pago__titulo,
+.destinos__titulo,
+.busca__titulo,
+.ofertas__titulo {
+    color: var(--grafito);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    margin-bottom: 64px;
+}
+
+.testimonios__titulo--subrayado,
+.pago__titulo--subrayado,
+.destinos__titulo--subrayado,
+.busca__titulo--subrayado,
+.ofertas__titulo--subrayado {
+    width: 180px;
+    height: 4px;
+    background: var(--rojo);
+    margin: 0 auto;
+    margin-top: 16px;
+}
+
+
+/*aqui empece yo angel*/
+.banner-list-moca {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 1200px;
+    margin: auto;
+    list-style: none;
+    padding: 0;
+}
+
+/* Imagen principal a la izquierda */
+.banner-item-moca:first-child,
+.banner-item-moca:nth-child(4) {
+    grid-row: span 2;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3/2;
+    /* Hace que la imagen sea más horizontal */
+}
+
+/* Contenedor de las imágenes secundarias */
+.imagen-derecha {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.banner-item-moca:nth-child(2),
+.banner-item-moca:nth-child(3),
+.banner-item-moca:nth-child(5),
+.banner-item-moca:nth-child(6) {
+    width: 100%;
+    height: 100%;
+}
+
+/* Ajustes generales */
+.banner-item-moca {
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.banner-item-moca a {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-item-moca .img-responsive {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.banner-item-moca:hover .img-responsive {
+    transform: scale(1.05);
+}
+
+/* Contenedor de texto dentro de la imagen */
+.banner-inner {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: left;
+    transition: background 0.3s ease;
+    border-radius: 0 0 10px 10px;
+}
+
+.banner-inner h3,
+.banner-inner h4 {
+    margin: 0 0 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.banner-inner p {
+    margin: 0;
+    font-size: 12px;
+}
+
+.banner-item-moca:hover .banner-inner {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Botón Ver más */
+.btn__link {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn__link:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.05);
+}
+
+/* Responsividad para pantallas más pequeñas */
+@media (max-width: 768px) {
+    .banner-list-moca {
+        grid-template-columns: 1fr;
+    }
+
+    .imagen-derecha {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .banner-item-moca {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner-item-moca .img-responsive {
+        width: 100%;
+        height: auto;
+    }
+
+}
